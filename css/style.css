@@ -15,7 +15,7 @@ header, footer {
     display: flex; 
     align-items: center;
     height: 3rem;
-    box-shadow: 1px 1px 3px 2px #3f3939;
+    box-shadow: 1px 1px 5px 1px #3f3939;
 }
 
 header {
@@ -39,11 +39,20 @@ input {
     padding: 5px;
     margin: 0 5px 0 5px;
     font-size: 18px;
-    box-shadow: 1px 1px 3px 2px #3f3939;
+    box-shadow: 1px 1px 5px 1px #3f3939;
 }
 
 #searchDrink {
     width: 300px;
+}
+
+#searchButton {
+    background-color: #000;
+    color: #fff;
+}
+
+#searchButton:hover {
+    background-color: #b11226;
 }
 
 #drinks {
@@ -67,7 +76,7 @@ input {
     height: 375px;
     border: 3px solid #b11226;
     border-radius: 10px;
-    box-shadow: 1px 1px 3px 2px #3f3939;
+    box-shadow: 1px 1px 5px 1px #3f3939;
 }
 
 .card, h2 {
@@ -80,4 +89,5 @@ footer {
     justify-content: center;
     background-color: #000;
     color: #fff;
+    height: 2rem;
 }
