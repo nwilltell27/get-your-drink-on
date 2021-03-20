@@ -8,10 +8,10 @@
 
 /*--- Functions ---*/
 function getData() {
-    $.ajax('https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=Vodka')
-.then(function(data) { 
-        console.log(data); 
-    }, function(error) {
-        console.log(error);
-    });
+    $.ajax('https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=')
+        .then(function (data) {
+            console.log(data);
+        }, function (error) {
+            console.log(error);
+        });
 }
