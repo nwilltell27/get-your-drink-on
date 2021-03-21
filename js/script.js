@@ -6,6 +6,7 @@ const MODAL_URL = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=';
 let drinks;
 
 /*--- Cached Element References (parts of DOM we need to touch) ---*/
+const $head = $('h1');
 const $input = $('input[type=text]');
 const $drinks = $('#drinks');
     /* Modal References */
@@ -13,10 +14,15 @@ const $ingredients = $('.ingredients');
 const $measurements = $('.measurements');
 
 /*--- Event Listeners ---*/
+$head.on('click', handleInit)
 $('form').on('submit', handleGetData);
 $drinks.on('click', '.card', handleShowModal);
 
 /*--- Functions ---*/
+function handleInit() {
+    $drinks.empty();
+}
+
     /* Card Functions */
 function handleGetData(evt) {
     evt.preventDefault();

@@ -24,6 +24,10 @@ header {
     color: #fff;
 }
 
+h1:hover {
+    color: #ed77f3;
+}
+
 main {
     flex-grow: 1;
 }
