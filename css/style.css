@@ -80,7 +80,7 @@ input {
     box-shadow: 1px 1px 5px 1px #3f3939;
 }
 
-.card, h2 {
+.card h2 {
     font-size: 20px;
     text-align: center;
 }

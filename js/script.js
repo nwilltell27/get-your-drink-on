@@ -10,6 +10,7 @@ let drinks;
 const $input = $('input[type=text]');
 const $drinks = $('#drinks');
 const $ingredients = $('.ingredients');
+const $measurements = $('.measurements');
 
 /*--- Event Listeners ---*/
 $('form').on('submit', handleGetData);
@@ -49,21 +50,31 @@ function render() {
 function handleShowModal(info) {
     // console.log(data);
     $ingredients.empty();
+    $measurements.empty();
     const drinkName = info.currentTarget.outerText;
     // console.log(drinkName);
     $.ajax(MODAL_URL + drinkName)
         .then(function (data) {
-            modalData(data);
+            ingrData(data);
+            msrData(data);
         }, function (error) {
             console.log(error);
         });
     $('.modal').modal();
 }
 
-function modalData(data) {
+function ingrData(data) {
     for (let i = 1; i < 16; i++) {
         let ingredient = document.createElement('p');
         ingredient.innerHTML = data.drinks[0][`strIngredient${i}`];
         $ingredients.append(ingredient);
+    }
+}
+
+function msrData(data) {
+    for (let i = 1; i < 16; i++) {
+        let measurement = document.createElement('p');
+        measurement.innerHTML = data.drinks[0][`strMeasure${i}`];
+        $measurements.append(measurement);
     }
 }
