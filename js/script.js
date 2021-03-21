@@ -1,29 +1,33 @@
-/*--- Constant Variables (data that never changes) ---*/
+/*--- Constant Variables (data that never changes) -------------------------------*/
 const BASE_URL = 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=';
 const MODAL_URL = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=';
 
 /*--- State Variables (data that changes) ---*/
 let drinks;
+let drink;
 
-/*--- Cached Element References (parts of DOM we need to touch) ---*/
+/*--- Cached Element References (parts of DOM we need to touch) ------------------*/
 const $head = $('h1');
 const $input = $('input[type=text]');
 const $drinks = $('#drinks');
     /* Modal References */
 const $ingredients = $('.ingredients');
 const $measurements = $('.measurements');
+const $directions = $('#details > a');
 
-/*--- Event Listeners ---*/
+/*--- Event Listeners ------------------------------------------------------------*/
 $head.on('click', handleInit)
 $('form').on('submit', handleGetData);
 $drinks.on('click', '.card', handleShowModal);
+$directions.on('click', handleShowSteps);
 
-/*--- Functions ---*/
+
+/*--- Functions ------------------------------------------------------------------*/
 function handleInit() {
     $drinks.empty();
 }
 
-    /* Card Functions */
+/* Drink Card Functions */
 function handleGetData(evt) {
     evt.preventDefault();
     const userInput = $input.val();
@@ -51,21 +55,24 @@ function render() {
     $drinks.empty().append(html);
 }
 
-    /* Modal Functions */
+/* Modal Functions */
 function handleShowModal(info) {
     /* removes content before adding new data */
     $ingredients.empty();
     $measurements.empty();
-    const drinkName = info.currentTarget.outerText;
-    $.ajax(MODAL_URL + drinkName)
+    drink = info.currentTarget.outerText;
+    $.ajax(MODAL_URL + drink)
         .then(function (data) {
             modalTitle(data);
             ingrData(data);
-            msrData(data);
+            msmtData(data);
         }, function (error) {
             console.log(error);
         });
-    $('.modal').modal();
+    $('#details').modal({
+        fadeDuration: 500,
+        fadeDelay: .50
+    });
 }
 
 function ingrData(data) {
@@ -76,7 +83,7 @@ function ingrData(data) {
     }
 }
 
-function msrData(data) {
+function msmtData(data) {
     for (let i = 1; i < 16; i++) {
         let measurement = document.createElement('p');
         measurement.innerHTML = data.drinks[0][`strMeasure${i}`];
@@ -90,4 +97,21 @@ function modalTitle(data) {
         src: data.drinks[0]['strDrinkThumb'],
         alt: data.drinks[0]['strDrink'],
     });
+}
+
+/* Second Modal */
+function handleShowSteps() {
+    $.ajax(MODAL_URL + drink)
+        .then(function (data) {
+            drinkSteps(data);
+        }, function (error) {
+            console.log(error);
+        });
+    $('#instructions').modal({
+        closeExisting: false
+    });
+}
+
+function drinkSteps(data) {
+    $('.steps').text(data.drinks[0]['strInstructions']);
 }
