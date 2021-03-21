@@ -102,12 +102,38 @@ footer {
 /*--- Modal Styling ---*/
 .flexContainer {
     display: flex;
+    justify-content: center;
+    margin-right: 30px;
+}
+
+.topRow {
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+    align-items: center;
+    text-align: center;
+}
+
+.topRow h2 {
+    font-size: 25px;
+    margin-right: 75px;
+}
+
+.topRow img {
+    width: 300px;
+    margin: 10px 75px 10px 0;
+    border: 5px solid #000;
+    box-shadow: 1px 1px 5px 1px #3f3939;
 }
 
 .col-1, .col-2 {
     display: flex;
     flex-direction: column;
-    width: 200px;
-    align-items: stretch;
+    width: 300px;
+    align-items: center;
     font-size: 16px;
+}
+
+.ingredients, .measurements {
+    margin-top: 10px;
 }

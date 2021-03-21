@@ -5,10 +5,10 @@ const MODAL_URL = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=';
 /*--- State Variables (data that changes) ---*/
 let drinks;
 
-
 /*--- Cached Element References (parts of DOM we need to touch) ---*/
 const $input = $('input[type=text]');
 const $drinks = $('#drinks');
+    /* Modal References */
 const $ingredients = $('.ingredients');
 const $measurements = $('.measurements');
 
@@ -17,7 +17,7 @@ $('form').on('submit', handleGetData);
 $drinks.on('click', '.card', handleShowModal);
 
 /*--- Functions ---*/
-/* Card Functions */
+    /* Card Functions */
 function handleGetData(evt) {
     evt.preventDefault();
     const userInput = $input.val();
@@ -33,7 +33,6 @@ function handleGetData(evt) {
 }
 
 function render() {
-    // console.log(data);
     const html = drinks.drinks.map(function (drink) {
         return `
             <article class="card">
@@ -46,15 +45,15 @@ function render() {
     $drinks.empty().append(html);
 }
 
-/* Modal Functions */
+    /* Modal Functions */
 function handleShowModal(info) {
-    // console.log(data);
+    /* removes content before adding new data */
     $ingredients.empty();
     $measurements.empty();
     const drinkName = info.currentTarget.outerText;
-    // console.log(drinkName);
     $.ajax(MODAL_URL + drinkName)
         .then(function (data) {
+            modalTitle(data);
             ingrData(data);
             msrData(data);
         }, function (error) {
@@ -77,4 +76,12 @@ function msrData(data) {
         measurement.innerHTML = data.drinks[0][`strMeasure${i}`];
         $measurements.append(measurement);
     }
+}
+
+function modalTitle(data) {
+    $('#title').text(data.drinks[0]['strDrink']);
+    $('#drinkPic').attr({
+        src: data.drinks[0]['strDrinkThumb'],
+        alt: data.drinks[0]['strDrink'],
+    });
 }
