@@ -71,7 +71,9 @@ function handleShowModal(info) {
         });
     $('#details').modal({
         fadeDuration: 500,
-        fadeDelay: .50
+        fadeDelay: .50,
+        closeClass: 'icon-remove',
+        closeText: 'x'
     });
 }
 
@@ -108,7 +110,9 @@ function handleShowSteps() {
             console.log(error);
         });
     $('#instructions').modal({
-        closeExisting: false
+        closeExisting: false,
+        closeClass: 'icon-remove',
+        closeText: 'x'
     });
 }
 
