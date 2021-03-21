@@ -1,5 +1,5 @@
 # Get Your Drink On
-A simple web app that assists users in searching for drinks by ingredient. 
+A simple web app that allows users to search Cocktail Database by ingredient. 
 
 ## Technologies
 - HTML5
@@ -12,7 +12,10 @@ A simple web app that assists users in searching for drinks by ingredient.
 ![wireframe](./imgs/wireframe.png)
 
 ## Getting Started
-[Click here](#) to get started.
+[Click here](https://nwilltell27.github.io/get-your-drink-on/) to get started.
 
 ## Future Enhancements
-TBD
+1. (COMPLETE) Clicking on **Cocktail Card** opens _Modal_ that displays ingredients/measurements. 
+2. Create second _Modal_ that displays directions for making selected cocktail.
+    - Or add directions under ingredients/measurements. 
+3. Allow users to search by "Cocktail Name."
