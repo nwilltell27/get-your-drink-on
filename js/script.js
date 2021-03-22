@@ -5,13 +5,15 @@ const MODAL_URL = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=';
 /*--- State Variables (data that changes) ---*/
 let drinks;
 let drink;
+let $input;
 
 /*--- Cached Element References (parts of DOM we need to touch) ------------------*/
 const $head = $('h1');
-const $input = $('input[type=text]');
+// const $input = $('input[type=text]');
 const $drinks = $('#drinks');
+const $searchFormIngredient = $('#searchFormIngredient');
+const $searchFormName = $('#searchFormName');
 
-const $searchForm = $('#searchForm');
     /* Init Buttons */
 const $byName = $('#byDrinkName');
 const $byIngredient = $('#byIngredient');
@@ -23,9 +25,12 @@ const $steps = $('.steps');
 
 /*--- Event Listeners ------------------------------------------------------------*/
 $head.on('click', handleInit)
-$('form').on('submit', handleGetData);
+$('#searchFormIngredient').on('submit', handleGetDataByIngredient);
+$('#searchFormName').on('submit', handleGetDataByName);
 
-// $byIngredient.on('click', handleByIngredient);
+    /* Init Buttons */
+$byIngredient.on('click', handleByIngredient);
+$byName.on('click', handleByName);
 
     /* Modal Events */
 $drinks.on('click', '.card', handleShowModal);
@@ -37,23 +42,50 @@ handleInit();
 
 function handleInit() {
     $drinks.empty();
-    // $searchForm.empty();
+    $searchFormIngredient.empty();
+    $searchFormName.empty();
 }
 
-    /* Init Button Functions */
-// function handleByIngredient() {
-//     const $searchIngredient = $(`
-//         <input id="searchDrink" type="text" placeholder="Enter Ingredient">
-//         <input id="searchButton" class="buttons" type="submit" value="Find Your Drink!">
-//     `);
-//     $searchForm.empty().append($searchIngredient);
-// }
+/* Init Button Functions */
+function handleByIngredient() {
+    const $searchIngredient = $(`
+        <input id="searchIngredient" class="searching" type="text" placeholder="Enter Ingredient">
+        <input id="searchButton" class="buttons" type="submit" value="Find Your Drink!">
+    `);
+    $searchFormName.empty();
+    $searchFormIngredient.empty().append($searchIngredient);
+    $input = $('input[type=text]');
+}
+
+function handleByName() {
+    const $searchName = $(`
+        <input id="searchDrink" class="searching" type="text" placeholder="Enter Drink Name">
+        <input id="searchButton" class="buttons" type="submit" value="Find Your Drink!">
+    `);
+    $searchFormIngredient.empty();
+    $searchFormName.empty().append($searchName);
+    $input = $('input[type=text]');
+}
 
 /* Drink Card Functions */
-function handleGetData(evt) {
+function handleGetDataByIngredient(evt) {
     evt.preventDefault();
     const userInput = $input.val();
     $.ajax(BASE_URL + userInput)
+        .then(function (data) {
+            drinks = data;
+            render();
+        }, function (error) {
+            console.log(error);
+        });
+    /* clears input */
+    $input.val('');
+}
+
+function handleGetDataByName(evt) {
+    evt.preventDefault();
+    const userInput = $input.val();
+    $.ajax(MODAL_URL + userInput)
         .then(function (data) {
             drinks = data;
             render();
