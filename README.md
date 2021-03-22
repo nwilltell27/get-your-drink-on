@@ -21,3 +21,4 @@ A simple web app that allows users to search Cocktail Database by ingredient.
     - Or add directions under ingredients/measurements. 
 3. (COMPLETE) Allow users to search by "Cocktail Name."
 4. (COMPLETE) Initialize website to a _Random Cocktail_.
+5. **Make "Mobile Friendly."**
