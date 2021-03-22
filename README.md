@@ -16,6 +16,6 @@ A simple web app that allows users to search Cocktail Database by ingredient.
 
 ## Future Enhancements
 1. (COMPLETE) Clicking on **Cocktail Card** opens _Modal_ that displays ingredients/measurements. 
-2. Create second _Modal_ that displays directions for making selected cocktail.
+2. (COMPLETE) Create second _Modal_ that displays directions for making selected cocktail.
     - Or add directions under ingredients/measurements. 
-3. Allow users to search by "Cocktail Name."
+3. (COMPLETE) Allow users to search by "Cocktail Name."
