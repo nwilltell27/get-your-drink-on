@@ -2,14 +2,13 @@
 const BASE_URL = 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=';
 const MODAL_URL = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=';
 
-/*--- State Variables (data that changes) ---*/
+/*--- State Variables (data that changes) ----------------------------------------*/
 let drinks;
 let drink;
 let $input;
 
 /*--- Cached Element References (parts of DOM we need to touch) ------------------*/
 const $head = $('h1');
-// const $input = $('input[type=text]');
 const $drinks = $('#drinks');
 const $searchFormIngredient = $('#searchFormIngredient');
 const $searchFormName = $('#searchFormName');
@@ -17,6 +16,7 @@ const $searchFormName = $('#searchFormName');
     /* Init Buttons */
 const $byName = $('#byDrinkName');
 const $byIngredient = $('#byIngredient');
+
     /* Modal References */
 const $ingredients = $('.ingredients');
 const $measurements = $('.measurements');
@@ -36,7 +36,6 @@ $byName.on('click', handleByName);
 $drinks.on('click', '.card', handleShowModal);
 $directions.on('click', handleShowSteps);
 
-
 /*--- Functions ------------------------------------------------------------------*/
 handleInit();
 
@@ -46,7 +45,7 @@ function handleInit() {
     $searchFormName.empty();
 }
 
-/* Init Button Functions */
+/*--- Init Button Functions ---*/
 function handleByIngredient() {
     const $searchIngredient = $(`
         <input id="searchIngredient" class="searching" type="text" placeholder="Enter Ingredient">
@@ -67,7 +66,7 @@ function handleByName() {
     $input = $('input[type=text]');
 }
 
-/* Drink Card Functions */
+/*--- Drink Card Functions ---*/
 function handleGetDataByIngredient(evt) {
     evt.preventDefault();
     const userInput = $input.val();
@@ -110,7 +109,7 @@ function render() {
 }
 
 /*--- Modal Functions ---*/
-/* First Modal */
+    /* First Modal */
 function handleShowModal(info) {
     /* removes content before adding new data */
     $ingredients.empty();
@@ -155,7 +154,7 @@ function modalTitle(data) {
     });
 }
 
-/* Second Modal */
+    /* Second Modal */
 function handleShowSteps() {
     $.ajax(MODAL_URL + drink)
         .then(function (data) {

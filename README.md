@@ -10,6 +10,7 @@ A simple web app that allows users to search Cocktail Database by ingredient.
 
 ## Wireframes
 ![wireframe](./imgs/wireframe.png)
+![modalframe](./imgs/modalframe.png)
 
 ## Getting Started
 [Click here](https://nwilltell27.github.io/get-your-drink-on/) to get started.
