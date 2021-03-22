@@ -17,7 +17,7 @@ const $searchFormName = $('#searchFormName');
 /* Buttons */
 const $byName = $('#byDrinkName');
 const $byIngredient = $('#byIngredient');
-const $getRandom = $('#getRandom');
+const $getRandom = $('#getRandom > button');
 
 /* Modal References */
 const $ingredients = $('.ingredients');
