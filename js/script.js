@@ -14,9 +14,10 @@ const $drinks = $('#drinks');
 const $searchFormIngredient = $('#searchFormIngredient');
 const $searchFormName = $('#searchFormName');
 
-/* Search Buttons */
+/* Buttons */
 const $byName = $('#byDrinkName');
 const $byIngredient = $('#byIngredient');
+const $getRandom = $('#getRandom');
 
 /* Modal References */
 const $ingredients = $('.ingredients');
@@ -29,9 +30,10 @@ $head.on('click', handleInit)
 $searchFormIngredient.on('submit', handleGetDataByIngredient);
 $searchFormName.on('submit', handleGetDataByName);
 
-/* Search Buttons */
+/* Buttons */
 $byIngredient.on('click', handleByIngredient);
 $byName.on('click', handleByName);
+$getRandom.on('click', handleInit);
 
 /* Modal Events */
 $drinks.on('click', '.card', handleFirstModal);
@@ -46,11 +48,12 @@ function init() {
     $searchFormIngredient.empty();
     $searchFormName.empty();
     clearModals();
-    getData();
+    handleByName();
+    getRandom();
 }
 
 /* Gets Random Cocktail */
-function getData() {
+function getRandom() {
     $.ajax(RANDOM_URL)
         .then(function (data) {
             drinks = data;
@@ -114,6 +117,7 @@ function handleGetDataByName(evt) {
     $input.val('');
 }
 
+/* Renders Drink Cards to the DOM */
 function render() {
     const html = drinks.drinks.map(function (drink) {
         return `
