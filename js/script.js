@@ -1,6 +1,7 @@
 /*--- Constant Variables (data that never changes) -------------------------------*/
 const INGREDIENT_URL = 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=';
 const DRINKNAME_URL = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=';
+const RANDOM_URL = 'https://www.thecocktaildb.com/api/json/v1/1/random.php';
 
 /*--- State Variables (data that changes) ----------------------------------------*/
 let drinks;
@@ -37,16 +38,26 @@ $drinks.on('click', '.card', handleFirstModal);
 $directions.on('click', handleSecondModal);
 
 /*--- Functions ------------------------------------------------------------------*/
-    /* Initialize Website */
+/*--- Initialize Website ---*/
 init();
 
 function init() {
     $drinks.empty();
     $searchFormIngredient.empty();
     $searchFormName.empty();
-    $ingredients.empty();
-    $measurements.empty();
-    $steps.empty();
+    clearModals();
+    getData();
+}
+
+    /* Gets Random Cocktail */
+function getData() {
+    $.ajax(RANDOM_URL)
+    .then(function (data) {
+        drinks = data;
+        render();
+    }, function (error) {
+        console.log(error);
+    });
 }
 
 function handleInit() {
@@ -184,5 +195,5 @@ function handleSecondModal() {
 }
 
 function drinkSteps(data) {
-    $('.steps').text(data.drinks[0]['strInstructions']);
+    $steps.text(data.drinks[0]['strInstructions']);
 }
