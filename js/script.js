@@ -13,7 +13,7 @@ const $drinks = $('#drinks');
 const $searchFormIngredient = $('#searchFormIngredient');
 const $searchFormName = $('#searchFormName');
 
-    /* Init Buttons */
+    /* Search Buttons */
 const $byName = $('#byDrinkName');
 const $byIngredient = $('#byIngredient');
 
@@ -25,27 +25,35 @@ const $steps = $('.steps');
 
 /*--- Event Listeners ------------------------------------------------------------*/
 $head.on('click', handleInit)
-$('#searchFormIngredient').on('submit', handleGetDataByIngredient);
-$('#searchFormName').on('submit', handleGetDataByName);
+$searchFormIngredient.on('submit', handleGetDataByIngredient);
+$searchFormName.on('submit', handleGetDataByName);
 
-    /* Init Buttons */
+    /* Search Buttons */
 $byIngredient.on('click', handleByIngredient);
 $byName.on('click', handleByName);
 
     /* Modal Events */
-$drinks.on('click', '.card', handleShowModal);
-$directions.on('click', handleShowSteps);
+$drinks.on('click', '.card', handleFirstModal);
+$directions.on('click', handleSecondModal);
 
 /*--- Functions ------------------------------------------------------------------*/
-handleInit();
+    /* Initialize Website */
+init();
 
-function handleInit() {
+function init() {
     $drinks.empty();
     $searchFormIngredient.empty();
     $searchFormName.empty();
+    $ingredients.empty();
+    $measurements.empty();
+    $steps.empty();
 }
 
-/*--- Init Button Functions ---*/
+function handleInit() {
+    init();
+}
+
+/*--- Search Button Functions ---*/
 function handleByIngredient() {
     const $searchIngredient = $(`
         <input id="searchIngredient" class="searching" type="text" placeholder="Enter Ingredient">
@@ -110,7 +118,7 @@ function render() {
 
 /*--- Modal Functions ---*/
     /* First Modal */
-function handleShowModal(info) {
+function handleFirstModal(info) {
     /* removes content before adding new data */
     $ingredients.empty();
     $measurements.empty();
@@ -155,7 +163,7 @@ function modalTitle(data) {
 }
 
     /* Second Modal */
-function handleShowSteps() {
+function handleSecondModal() {
     $.ajax(MODAL_URL + drink)
         .then(function (data) {
             drinkSteps(data);
