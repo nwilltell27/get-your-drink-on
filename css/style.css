@@ -87,7 +87,6 @@ input, .buttons {
     justify-content: center;
     align-items: center;
     margin: 25px auto 0 auto;
-    width: 950px;
     flex-wrap: wrap;
 }
 

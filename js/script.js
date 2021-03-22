@@ -14,11 +14,11 @@ const $drinks = $('#drinks');
 const $searchFormIngredient = $('#searchFormIngredient');
 const $searchFormName = $('#searchFormName');
 
-    /* Search Buttons */
+/* Search Buttons */
 const $byName = $('#byDrinkName');
 const $byIngredient = $('#byIngredient');
 
-    /* Modal References */
+/* Modal References */
 const $ingredients = $('.ingredients');
 const $measurements = $('.measurements');
 const $directions = $('#details > a');
@@ -29,11 +29,11 @@ $head.on('click', handleInit)
 $searchFormIngredient.on('submit', handleGetDataByIngredient);
 $searchFormName.on('submit', handleGetDataByName);
 
-    /* Search Buttons */
+/* Search Buttons */
 $byIngredient.on('click', handleByIngredient);
 $byName.on('click', handleByName);
 
-    /* Modal Events */
+/* Modal Events */
 $drinks.on('click', '.card', handleFirstModal);
 $directions.on('click', handleSecondModal);
 
@@ -49,15 +49,15 @@ function init() {
     getData();
 }
 
-    /* Gets Random Cocktail */
+/* Gets Random Cocktail */
 function getData() {
     $.ajax(RANDOM_URL)
-    .then(function (data) {
-        drinks = data;
-        render();
-    }, function (error) {
-        console.log(error);
-    });
+        .then(function (data) {
+            drinks = data;
+            render();
+        }, function (error) {
+            console.log(error);
+        });
 }
 
 function handleInit() {
@@ -128,7 +128,7 @@ function render() {
 }
 
 /*--- Modal Functions ---*/
-    /* Clear any content from Modals */
+/* Clear any content from Modals */
 clearModals();
 
 function clearModals() {
@@ -137,7 +137,7 @@ function clearModals() {
     $steps.empty();
 }
 
-    /* First Modal */
+/* First Modal */
 function handleFirstModal(info) {
     /* removes content before adding new data */
     clearModals();
@@ -181,7 +181,7 @@ function modalTitle(data) {
     });
 }
 
-    /* Second Modal */
+/* Second Modal */
 function handleSecondModal() {
     $.ajax(DRINKNAME_URL + drink)
         .then(function () {
