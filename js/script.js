@@ -90,9 +90,9 @@ function handleByName() {
 
 /*--- Drink Card Functions ---*/
 function handleGetDataByIngredient(evt) {
-    if (userInput === '') return;
     evt.preventDefault();
     const userInput = $input.val();
+    if (userInput === '') return;
     $.ajax(INGREDIENT_URL + userInput)
         .then(function (data) {
             drinks = data;
@@ -105,9 +105,9 @@ function handleGetDataByIngredient(evt) {
 }
 
 function handleGetDataByName(evt) {
-    if (userInput === '') return;
     evt.preventDefault();
     const userInput = $input.val();
+    if (userInput === '') return;
     $.ajax(DRINKNAME_URL + userInput)
         .then(function (data) {
             drinks = data;
