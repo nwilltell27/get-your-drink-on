@@ -1,6 +1,6 @@
 /*--- Constant Variables (data that never changes) -------------------------------*/
-const BASE_URL = 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=';
-const MODAL_URL = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=';
+const INGREDIENT_URL = 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=';
+const DRINKNAME_URL = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=';
 
 /*--- State Variables (data that changes) ----------------------------------------*/
 let drinks;
@@ -78,7 +78,7 @@ function handleByName() {
 function handleGetDataByIngredient(evt) {
     evt.preventDefault();
     const userInput = $input.val();
-    $.ajax(BASE_URL + userInput)
+    $.ajax(INGREDIENT_URL + userInput)
         .then(function (data) {
             drinks = data;
             render();
@@ -92,7 +92,7 @@ function handleGetDataByIngredient(evt) {
 function handleGetDataByName(evt) {
     evt.preventDefault();
     const userInput = $input.val();
-    $.ajax(MODAL_URL + userInput)
+    $.ajax(DRINKNAME_URL + userInput)
         .then(function (data) {
             drinks = data;
             render();
@@ -117,18 +117,26 @@ function render() {
 }
 
 /*--- Modal Functions ---*/
-    /* First Modal */
-function handleFirstModal(info) {
-    /* removes content before adding new data */
+    /* Clear any content from Modals */
+clearModals();
+
+function clearModals() {
     $ingredients.empty();
     $measurements.empty();
     $steps.empty();
+}
+
+    /* First Modal */
+function handleFirstModal(info) {
+    /* removes content before adding new data */
+    clearModals();
     drink = info.currentTarget.outerText;
-    $.ajax(MODAL_URL + drink)
+    $.ajax(DRINKNAME_URL + drink)
         .then(function (data) {
             modalTitle(data);
             ingrData(data);
             msmtData(data);
+            drinkSteps(data);
         }, function (error) {
             console.log(error);
         });
@@ -164,9 +172,9 @@ function modalTitle(data) {
 
     /* Second Modal */
 function handleSecondModal() {
-    $.ajax(MODAL_URL + drink)
-        .then(function (data) {
-            drinkSteps(data);
+    $.ajax(DRINKNAME_URL + drink)
+        .then(function () {
+            // drinkSteps(data);
         }, function (error) {
             console.log(error);
         });
