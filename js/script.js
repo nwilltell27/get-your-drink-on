@@ -10,22 +10,44 @@ let drink;
 const $head = $('h1');
 const $input = $('input[type=text]');
 const $drinks = $('#drinks');
+
+const $searchForm = $('#searchForm');
+    /* Init Buttons */
+const $byName = $('#byDrinkName');
+const $byIngredient = $('#byIngredient');
     /* Modal References */
 const $ingredients = $('.ingredients');
 const $measurements = $('.measurements');
 const $directions = $('#details > a');
+const $steps = $('.steps');
 
 /*--- Event Listeners ------------------------------------------------------------*/
 $head.on('click', handleInit)
 $('form').on('submit', handleGetData);
+
+// $byIngredient.on('click', handleByIngredient);
+
+    /* Modal Events */
 $drinks.on('click', '.card', handleShowModal);
 $directions.on('click', handleShowSteps);
 
 
 /*--- Functions ------------------------------------------------------------------*/
+handleInit();
+
 function handleInit() {
     $drinks.empty();
+    // $searchForm.empty();
 }
+
+    /* Init Button Functions */
+// function handleByIngredient() {
+//     const $searchIngredient = $(`
+//         <input id="searchDrink" type="text" placeholder="Enter Ingredient">
+//         <input id="searchButton" class="buttons" type="submit" value="Find Your Drink!">
+//     `);
+//     $searchForm.empty().append($searchIngredient);
+// }
 
 /* Drink Card Functions */
 function handleGetData(evt) {
@@ -55,11 +77,13 @@ function render() {
     $drinks.empty().append(html);
 }
 
-/* Modal Functions */
+/*--- Modal Functions ---*/
+/* First Modal */
 function handleShowModal(info) {
     /* removes content before adding new data */
     $ingredients.empty();
     $measurements.empty();
+    $steps.empty();
     drink = info.currentTarget.outerText;
     $.ajax(MODAL_URL + drink)
         .then(function (data) {
@@ -71,7 +95,7 @@ function handleShowModal(info) {
         });
     $('#details').modal({
         fadeDuration: 500,
-        fadeDelay: .50
+        fadeDelay: 1.0
     });
 }
 
