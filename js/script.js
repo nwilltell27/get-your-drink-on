@@ -151,6 +151,7 @@ function handleFirstModal(info) {
             modalTitle(data);
             ingrData(data);
             msmtData(data);
+            /* Second Modal content */
             drinkSteps(data);
         }, function (error) {
             console.log(error);
@@ -188,8 +189,8 @@ function modalTitle(data) {
 /* Second Modal */
 function handleSecondModal() {
     $.ajax(DRINKNAME_URL + drink)
-        .then(function () {
-            // drinkSteps(data);
+        .then(function (data) {
+            drinkSteps(data);
         }, function (error) {
             console.log(error);
         });

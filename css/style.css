@@ -17,7 +17,7 @@ header, footer {
     display: flex; 
     align-items: center;
     height: 3rem;
-    box-shadow: 1px 1px 5px 1px #3f3939;
+    box-shadow: 1px 1px 5px 1px #201f1f;
 }
 
 header {
@@ -27,7 +27,7 @@ header {
 }
 
 h1:hover {
-    text-shadow: 1px 1px 5px #3f3939;
+    text-shadow: 1px 1px 5px #201f1f;
 }
 
 h1:active {
@@ -54,7 +54,7 @@ input, .buttons {
     margin: 0 5px 0 5px;
     font-family: Quicksand, Helvetica;
     font-size: 18px;
-    box-shadow: 1px 1px 5px 1px #3f3939;
+    box-shadow: 1px 1px 5px 1px #201f1f;
 }
 
 .buttons {
@@ -115,7 +115,7 @@ input, .buttons {
     height: 375px;
     border: 3px solid #b11226;
     border-radius: 10px;
-    box-shadow: 1px 1px 5px 1px #3f3939;
+    box-shadow: 1px 1px 5px 1px #201f1f;
 }
 
 .card h2 {
