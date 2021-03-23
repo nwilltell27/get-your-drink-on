@@ -106,21 +106,31 @@ input, .buttons {
 .card {
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
     background-color: #000;
     color: #fff;
-    padding: 5px;
-    margin: 10px;
-    width: 275px;
-    height: 375px;
+    margin: 15px;
+    width: 270px;
+    height: 350px;
     border: 3px solid #b11226;
     border-radius: 10px;
     box-shadow: 1px 1px 5px 1px #201f1f;
 }
 
 .card h2 {
+    display: flex;
     font-size: 20px;
     text-align: center;
+    height: 60px;
+    padding-top: 10px;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.card img {
+    max-width: 250px;
+    max-height: 250px;
+    margin: auto;
+    position: relative;
 }
 
 .card:hover {
@@ -144,27 +154,27 @@ footer {
 /*--- First Modal -----------------------------------------------------*/
 .flexContainer {
     display: flex;
-    justify-content: center;
-    margin-right: 30px;
+    justify-content: space-evenly;
 }
 
 .topRow {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    width: 500px;
+    /* display: flex; */
+    /* flex-direction: column; */
+    margin: auto;
 }
 
 .topRow h2 {
     font-size: 25px;
-    margin-right: 75px;
+    text-align: center;
+    /* margin-right: 75px; */
 }
 
 .topRow img {
-    width: 300px;
-    margin: 10px 75px 10px 0;
+    display: flex;
+    justify-content: center;
+    width: 75%;
+    height: auto;
+    margin: 10px auto 10px auto;
     border: 5px solid #000;
     box-shadow: 1px 1px 5px 1px #3f3939;
 }
@@ -185,12 +195,12 @@ footer {
     margin-top: 10px;
 }
 
-#details a {
+#instructLink {
     display: flex;
     align-items: center;
     justify-content: space-evenly;
-    margin: 20px 20px 0 0;
     font-size: 16px;
+    margin-top: 10px;
 }
 
 /* --- Second Modal --------------------------------------------------- */
@@ -199,3 +209,5 @@ footer {
     text-align: center;
     text-decoration: underline;
 }
+
+/* @media  */
