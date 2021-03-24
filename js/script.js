@@ -44,9 +44,9 @@ $directions.on('click', handleSecondModal);
 init();
 
 function init() {
-    $drinks.empty();
-    $searchFormIngredient.empty();
-    $searchFormName.empty();
+    // $drinks.empty();
+    // $searchFormIngredient.empty();
+    // $searchFormName.empty();
     clearModals();
     handleByName();
     getRandom();
@@ -135,8 +135,6 @@ function render() {
 
 /*--- Modal Functions ---*/
 /* Clear any content from Modals */
-clearModals();
-
 function clearModals() {
     $ingredients.empty();
     $measurements.empty();
@@ -163,6 +161,16 @@ function handleFirstModal(info) {
         fadeDelay: 1.0
     });
 }
+
+/* WIP: Capitalize first letter of each word in Drink Name */
+// function capFirst () {
+//     const words = drink.split('');
+//     for (let i = 0; i = words.length; i++) {
+//         words[i] = words[i][0].toUpperCase() + words[i].substr(1);
+//     }
+//     words.join('');
+//     drink = words;
+// }
 
 function ingrData(data) {
     for (let i = 1; i < 16; i++) {
