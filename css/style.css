@@ -94,6 +94,7 @@ input, .buttons {
     margin: 25px auto 25px auto;
     flex-wrap: wrap;
     min-height: 400px;
+    max-width: 900px;
 }
 
 .card {
@@ -130,8 +131,10 @@ input, .buttons {
 #top a {
     position: fixed;
     float: right;
-    right: 4%;
+    /* right: 4%;
     left: 96%;
+    bottom: 10%; */
+    right: 2%;
     bottom: 10%;
     max-width: 40px;
     width: 100%;
@@ -274,6 +277,11 @@ h1:active {
 
     .searching {
         width: 300px;
+    }
+
+    #top a {
+        bottom: 10%;
+        right: 2%;
     }
 
     .col-1, .col-2 {
