@@ -243,6 +243,7 @@ h1:active {
 
 .flexContainer h3 {
     text-decoration: underline;
+    font-size: 18px;
 }
 
 .col-1, .col-2 {
@@ -295,6 +296,10 @@ h1:active {
     #top a {
         bottom: 10%;
         right: 2%;
+    }
+
+    .flexContainer h3 {
+        font-size: 20px;
     }
 
     .col-1, .col-2 {

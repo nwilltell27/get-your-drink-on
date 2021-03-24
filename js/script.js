@@ -162,16 +162,6 @@ function handleFirstModal(info) {
     });
 }
 
-/* WIP: Capitalize first letter of each word in Drink Name */
-// function capFirst () {
-//     const words = drink.split('');
-//     for (let i = 0; i = words.length; i++) {
-//         words[i] = words[i][0].toUpperCase() + words[i].substr(1);
-//     }
-//     words.join('');
-//     drink = words;
-// }
-
 function ingrData(data) {
     for (let i = 1; i < 16; i++) {
         let ingredient = document.createElement('p');
