@@ -252,6 +252,7 @@ h1:active {
     width: 200px;
     /* align-items: center; */
     font-size: 16px;
+    margin: 5px;
 }
 
 .ingredients, .measurements {
