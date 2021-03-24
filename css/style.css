@@ -1,11 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Quicksand&display=swap');
 
-
 * {
     box-sizing: border-box;
     margin: 0;
 }
-
 
 body {
     font-family: Quicksand, Helvetica;
@@ -27,6 +25,17 @@ header {
     color: #fff;
 }
 
+h1 {
+    margin: auto;
+}
+
+h2#searchHead {
+    text-align: center;
+    margin-top: 10px;
+    color: #fff;
+    font-size: 24px;
+}
+
 main {
     flex-grow: 1;
 }
@@ -39,20 +48,6 @@ main {
 
 #searchFormName {
     margin-top: -25px;
-}
-
-h1:hover {
-    text-shadow: 1px 1px 5px #201f1f;
-    cursor: pointer;
-}
-
-h1:active {
-    color: #ed77f3;
-    text-shadow: none;
-}
-
-main {
-    flex-grow: 1;
 }
 
 input, .buttons {
@@ -73,7 +68,7 @@ input, .buttons {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 25px;
+    margin-top: 5px;
 }
 
 #getRandom {
@@ -89,18 +84,7 @@ input, .buttons {
 }
 
 .searching {
-    width: 300px;
-}
-
-.buttons:hover {
-    background-color: #b11226;
-    border-color: #000;
-    cursor: pointer;
-}
-
-.buttons:active {
-    color: #ed77f3;
-    box-shadow: none;
+    width: 250px;
 }
 
 #drinks {
@@ -142,6 +126,38 @@ input, .buttons {
     position: relative;
 }
 
+footer {
+    margin-top: 15px;
+    justify-content: center;
+    background-color: #000;
+    font-size: 14px;
+    color: #fff;
+    height: 2rem;
+}
+
+/* --- Curser and Button Responsive Styling ----------------------------------------------- */
+
+h1:hover {
+    text-shadow: 1px 1px 5px #201f1f;
+    cursor: pointer;
+}
+
+h1:active {
+    color: #ed77f3;
+    text-shadow: none;
+}
+
+.buttons:hover {
+    background-color: #b11226;
+    border-color: #000;
+    cursor: pointer;
+}
+
+.buttons:active {
+    color: #ed77f3;
+    box-shadow: none;
+}
+
 .card:hover {
     background-color: #b11226;
     border-color: #000;
@@ -151,15 +167,6 @@ input, .buttons {
 .card:active {
     color: #ed77f3;
     box-shadow: none;
-}
-
-footer {
-    margin-top: 15px;
-    justify-content: center;
-    background-color: #000;
-    font-size: 14px;
-    color: #fff;
-    height: 2rem;
 }
 
 /*--- First Modal -----------------------------------------------------*/
@@ -221,6 +228,7 @@ footer {
     text-decoration: underline;
 }
 
+/* ==================================================================== */
 /* --- Media Queries -------------------------------------------------- */
 
 @media only screen and (min-width: 768px) {
@@ -229,4 +237,13 @@ footer {
         display: flex;
         flex-direction: column;
     }
+
+    h1 {
+        margin-left: 10px;
+    }
+
+    .searching {
+        width: 300px;
+    }
+    
 }
