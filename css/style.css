@@ -176,15 +176,12 @@ h1:active {
 }
 
 .topRow {
-    /* display: flex; */
-    /* flex-direction: column; */
     margin: auto;
 }
 
 .topRow h2 {
     font-size: 25px;
     text-align: center;
-    /* margin-right: 75px; */
 }
 
 .topRow img {
@@ -205,7 +202,7 @@ h1:active {
     display: flex;
     flex-direction: column;
     width: 200px;
-    align-items: center;
+    /* align-items: center; */
     font-size: 16px;
 }
 
@@ -244,6 +241,10 @@ h1:active {
 
     .searching {
         width: 300px;
+    }
+
+    .col-1, .col-2 {
+        align-items: center;
     }
     
 }
