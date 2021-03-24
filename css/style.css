@@ -28,10 +28,12 @@ header {
 
 h1:hover {
     text-shadow: 1px 1px 5px #201f1f;
+    cursor: pointer;
 }
 
 h1:active {
     color: #ed77f3;
+    text-shadow: none;
 }
 
 main {
@@ -88,10 +90,12 @@ input, .buttons {
 .buttons:hover {
     background-color: #b11226;
     border-color: #000;
+    cursor: pointer;
 }
 
 .buttons:active {
     color: #ed77f3;
+    box-shadow: none;
 }
 
 #drinks {
@@ -136,10 +140,12 @@ input, .buttons {
 .card:hover {
     background-color: #b11226;
     border-color: #000;
+    cursor: pointer;
 }
 
 .card:active {
     color: #ed77f3;
+    box-shadow: none;
 }
 
 footer {
@@ -210,4 +216,9 @@ footer {
     text-decoration: underline;
 }
 
-/* @media  */
+@media only screen and (max-width: 425px) {
+    body {
+        display: grid;
+    }
+
+}
