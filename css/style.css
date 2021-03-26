@@ -227,7 +227,7 @@ h1:active {
 }
 
 .topRow h2 {
-    font-size: 25px;
+    font-size: 16px;
     text-align: center;
 }
 
@@ -243,15 +243,16 @@ h1:active {
 
 .flexContainer h3 {
     text-decoration: underline;
-    font-size: 18px;
+    font-size: 16px;
 }
 
 .col-1, .col-2 {
     display: flex;
     flex-direction: column;
-    width: 200px;
+    min-width: none;
+    max-width: 500px;
     /* align-items: center; */
-    font-size: 16px;
+    font-size: 14px;
     margin: 5px;
 }
 
@@ -294,17 +295,24 @@ h1:active {
         margin-top: 0;
     }
 
+    /* Back to Top Button */
     #top a {
         bottom: 10%;
         right: 2%;
     }
 
+    /* Modals */
+    #topRow h2 {
+        /* font-size: 40px; */
+    }
+
     .flexContainer h3 {
-        font-size: 20px;
+        font-size: 18px;
     }
 
     .col-1, .col-2 {
-        align-items: center;
+        /* align-items: center; */
+        font-size: 14px;
     }
 }
 
@@ -312,5 +320,10 @@ h1:active {
 
     h1 {
         margin-left: 10px;
+    }
+
+    /* Modals */
+    #topRow h2 {
+        font-size: 40px;
     }
 }
