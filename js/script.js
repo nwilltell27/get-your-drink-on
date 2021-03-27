@@ -7,15 +7,16 @@ const RANDOM_URL = 'https://www.thecocktaildb.com/api/json/v1/1/random.php';
 let drinks;
 let drink;
 let $input;
+let results;
 // let ingredients;
 // let measurements;
 
 /*--- Cached Element References (parts of DOM we need to touch) ------------------*/
 const $head = $('h1');
-const $drinks = $('#drinks');
 const $searchFormIngredient = $('#searchFormIngredient');
 const $searchFormName = $('#searchFormName');
 const $searchResults = $('#searchResults');
+const $drinks = $('#drinks');
 
 /* Buttons */
 const $byName = $('#byDrinkName');
@@ -53,7 +54,7 @@ function init() {
     clearModals();
     handleByName();
     getRandom();
-}
+};
 
 /* Gets Random Cocktail */
 function getRandom() {
@@ -65,11 +66,11 @@ function getRandom() {
         }, function (error) {
             console.log(error);
         });
-}
+};
 
 function handleInit() {
     init();
-}
+};
 
 /*--- Search Button Functions ---*/
 function handleByIngredient() {
@@ -80,7 +81,7 @@ function handleByIngredient() {
     $searchFormName.empty();
     $searchFormIngredient.empty().append($searchIngredient);
     $input = $('input[type=text]');
-}
+};
 
 function handleByName() {
     const $searchName = $(`
@@ -90,7 +91,7 @@ function handleByName() {
     $searchFormIngredient.empty();
     $searchFormName.empty().append($searchName);
     $input = $('input[type=text]');
-}
+};
 
 /*--- Drink Card Functions ---*/
 function handleGetDataByIngredient(evt) {
@@ -107,7 +108,7 @@ function handleGetDataByIngredient(evt) {
         });
     /* clears input */
     $input.val('');
-}
+};
 
 function handleGetDataByName(evt) {
     evt.preventDefault();
@@ -123,7 +124,7 @@ function handleGetDataByName(evt) {
         });
     /* clears input */
     $input.val('');
-}
+};
 
 /* Renders Drink Cards to the DOM */
 function render() {
@@ -137,8 +138,17 @@ function render() {
     });
     /* provides a blank page then appends drinks from new search */
     $drinks.empty().append(html);
-    $searchResults.append('Displaying ' + html.length + ' result(s)');
-}
+    results = html;
+    displayResults();
+};
+
+function displayResults() {
+    if (results.length === 1) {
+        $searchResults.append('Displaying ' + results.length + ' result');
+    } else {
+        $searchResults.append('Displaying ' + results.length + ' results');
+    }
+};
 
 /*--- Modal Functions ---*/
 /* Clear any content from Modals */
@@ -146,7 +156,7 @@ function clearModals() {
     $ingredients.empty();
     $measurements.empty();
     $steps.empty();
-}
+};
 
 /* First Modal */
 function handleFirstModal(info) {
@@ -168,7 +178,7 @@ function handleFirstModal(info) {
         fadeDuration: 500,
         fadeDelay: 1.0
     });
-}
+};
 
 /* Ingredients Iteration */
 function ingrData(data) {
@@ -178,7 +188,7 @@ function ingrData(data) {
         if (ingredient.innerHTML === '') return;
         $ingredients.append(ingredient);
     }
-}
+};
 
 /* Measurements Iteration */
 function msmtData(data) {
@@ -188,7 +198,7 @@ function msmtData(data) {
         if (measurement.innerHTML === '') return;
         $measurements.append(measurement);
     }
-}
+};
 
 /* Drink Name and Picture */
 function modalTitle(data) {
@@ -197,7 +207,7 @@ function modalTitle(data) {
         src: data.drinks[0]['strDrinkThumb'],
         alt: data.drinks[0]['strDrink'],
     });
-}
+};
 
 /* Table for Ingr/Msmt */
 // function drinkDetails(data) {
@@ -231,8 +241,8 @@ function handleSecondModal() {
     $('#instructions').modal({
         closeExisting: false
     });
-}
+};
 
 function drinkSteps(data) {
     $steps.text(data.drinks[0]['strInstructions']);
-}
+};
