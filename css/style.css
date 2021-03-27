@@ -8,12 +8,13 @@
 body {
     font-family: Quicksand, Helvetica;
     display: grid;
-    min-height: 100vh; 
+    min-height: 100vh;
     background-color: #741b79;
 }
 
-header, footer {
-    display: flex; 
+header,
+footer {
+    display: flex;
     align-items: center;
     height: 3rem;
     box-shadow: 1px 1px 5px 1px #201f1f;
@@ -51,7 +52,8 @@ main {
     margin-top: -25px;
 }
 
-#searchFormName, #searchFormIngredient {
+#searchFormName,
+#searchFormIngredient {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -61,7 +63,8 @@ main {
     margin-top: 10px;
 }
 
-input, .buttons {
+input,
+.buttons {
     border: 3px solid #b11226;
     padding: 5px;
     margin: 0 5px 0 5px;
@@ -92,17 +95,25 @@ input, .buttons {
 #getRandom button {
     padding-left: 20px;
     padding-right: 20px;
+    margin-top: 10px;
 }
 
 .searching {
     width: 300px;
 }
 
+#searchResults {
+    margin: 20px auto 20px auto;
+    text-align: center;
+    color: #fff;
+    height: 10px;
+}
+
 #drinks {
-    display: flex; 
+    display: flex;
     justify-content: center;
     align-items: center;
-    margin: 25px auto 25px auto;
+    margin: auto;
     flex-wrap: wrap;
     min-height: 400px;
     max-width: 900px;
@@ -113,7 +124,7 @@ input, .buttons {
     flex-direction: column;
     background-color: #000;
     color: #fff;
-    margin: 15px;
+    margin: 20px 15px 30px 15px;
     width: 270px;
     height: 350px;
     border: 3px solid #b11226;
@@ -234,7 +245,7 @@ h1:active {
 .topRow img {
     display: flex;
     justify-content: center;
-    width: 75%;
+    width: 60%;
     height: auto;
     margin: 10px auto 10px auto;
     border: 5px solid #000;
@@ -246,7 +257,8 @@ h1:active {
     font-size: 16px;
 }
 
-.col-1, .col-2 {
+.col-1,
+.col-2 {
     display: flex;
     flex-direction: column;
     min-width: none;
@@ -256,11 +268,29 @@ h1:active {
     margin: 5px;
 }
 
-.col-1 ol, .col-2 ol {
-    margin-left: -25px;
+.col-1 ol,
+.col-2 ol {
+    margin-left: -35px;
 }
 
-.ingredients, .measurements {
+ol {
+    counter-reset: list;
+}
+
+ol>li {
+    list-style: none;
+}
+
+ol>li:before {
+    content: counter(list) ") ";
+    counter-increment: list;
+    margin-right: 10px;
+    font-family: Arial;
+    font-weight: bold;
+}
+
+.ingredients,
+.measurements {
     margin-top: 10px;
 }
 
@@ -289,12 +319,13 @@ h1:active {
         flex-direction: column;
     }
 
-    #searchFormName, #searchFormIngredient {
+    #searchFormName,
+    #searchFormIngredient {
         display: flex;
         flex-direction: row;
         align-items: center;
     }
-    
+
     #searchButton {
         margin-top: 0;
     }
@@ -311,13 +342,18 @@ h1:active {
         /* text-decoration: underline; */
     }
 
+    .topRow img {
+        width: 75%;
+    }
+
     .flexContainer h3 {
         font-size: 18px;
     }
 
-    .col-1, .col-2 {
+    .col-1,
+    .col-2 {
         /* align-items: center; */
-        font-size: 14px;
+        font-size: 16px;
     }
 }
 

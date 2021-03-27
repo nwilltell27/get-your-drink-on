@@ -15,6 +15,7 @@ const $head = $('h1');
 const $drinks = $('#drinks');
 const $searchFormIngredient = $('#searchFormIngredient');
 const $searchFormName = $('#searchFormName');
+const $searchResults = $('#searchResults');
 
 /* Buttons */
 const $byName = $('#byDrinkName');
@@ -60,6 +61,7 @@ function getRandom() {
         .then(function (data) {
             drinks = data;
             render();
+            $searchResults.empty();
         }, function (error) {
             console.log(error);
         });
@@ -93,6 +95,7 @@ function handleByName() {
 /*--- Drink Card Functions ---*/
 function handleGetDataByIngredient(evt) {
     evt.preventDefault();
+    $searchResults.empty();
     const userInput = $input.val();
     if (userInput === '') return;
     $.ajax(INGREDIENT_URL + userInput)
@@ -108,6 +111,7 @@ function handleGetDataByIngredient(evt) {
 
 function handleGetDataByName(evt) {
     evt.preventDefault();
+    $searchResults.empty();
     const userInput = $input.val();
     if (userInput === '') return;
     $.ajax(DRINKNAME_URL + userInput)
@@ -133,6 +137,7 @@ function render() {
     });
     /* provides a blank page then appends drinks from new search */
     $drinks.empty().append(html);
+    $searchResults.append('Displaying ' + html.length + ' result(s)');
 }
 
 /*--- Modal Functions ---*/
@@ -153,7 +158,7 @@ function handleFirstModal(info) {
             modalTitle(data);
             ingrData(data);
             msmtData(data);
-            // drinkDetials(data);
+            // drinkDetails(data);
             /* Second Modal content */
             drinkSteps(data);
         }, function (error) {
@@ -185,9 +190,17 @@ function msmtData(data) {
     }
 }
 
+/* Drink Name and Picture */
+function modalTitle(data) {
+    $('#title').text(data.drinks[0]['strDrink']);
+    $('#drinkPic').attr({
+        src: data.drinks[0]['strDrinkThumb'],
+        alt: data.drinks[0]['strDrink'],
+    });
+}
 
 /* Table for Ingr/Msmt */
-// function drinkDetials(data) {
+// function drinkDetails(data) {
 //     for (let i = 1; i < 16; i++) {
 //         var ingredient = document.createElement('td');
 //         ingredient.innerHTML = data.drinks[0][`strIngredient${i}`];
@@ -206,15 +219,6 @@ function msmtData(data) {
 //     `);
 //     $('tbody').append($tr);
 // }
-
-
-function modalTitle(data) {
-    $('#title').text(data.drinks[0]['strDrink']);
-    $('#drinkPic').attr({
-        src: data.drinks[0]['strDrinkThumb'],
-        alt: data.drinks[0]['strDrink'],
-    });
-}
 
 /* Second Modal */
 function handleSecondModal() {
