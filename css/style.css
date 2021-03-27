@@ -302,8 +302,9 @@ h1:active {
     }
 
     /* Modals */
-    #topRow h2 {
-        /* font-size: 40px; */
+    .topRow h2 {
+        font-size: 24px;
+        text-decoration: underline;
     }
 
     .flexContainer h3 {
@@ -322,8 +323,4 @@ h1:active {
         margin-left: 10px;
     }
 
-    /* Modals */
-    #topRow h2 {
-        font-size: 40px;
-    }
 }
