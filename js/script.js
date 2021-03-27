@@ -7,6 +7,8 @@ const RANDOM_URL = 'https://www.thecocktaildb.com/api/json/v1/1/random.php';
 let drinks;
 let drink;
 let $input;
+// let ingredients;
+// let measurements;
 
 /*--- Cached Element References (parts of DOM we need to touch) ------------------*/
 const $head = $('h1');
@@ -151,6 +153,7 @@ function handleFirstModal(info) {
             modalTitle(data);
             ingrData(data);
             msmtData(data);
+            // drinkDetials(data);
             /* Second Modal content */
             drinkSteps(data);
         }, function (error) {
@@ -162,21 +165,48 @@ function handleFirstModal(info) {
     });
 }
 
+/* Ingredients Iteration */
 function ingrData(data) {
     for (let i = 1; i < 16; i++) {
-        let ingredient = document.createElement('p');
+        let ingredient = document.createElement('li');
         ingredient.innerHTML = data.drinks[0][`strIngredient${i}`];
+        if (ingredient.innerHTML === '') return;
         $ingredients.append(ingredient);
     }
 }
 
+/* Measurements Iteration */
 function msmtData(data) {
     for (let i = 1; i < 16; i++) {
-        let measurement = document.createElement('p');
+        let measurement = document.createElement('li');
         measurement.innerHTML = data.drinks[0][`strMeasure${i}`];
+        if (measurement.innerHTML === '') return;
         $measurements.append(measurement);
     }
 }
+
+
+/* Table for Ingr/Msmt */
+// function drinkDetials(data) {
+//     for (let i = 1; i < 16; i++) {
+//         var ingredient = document.createElement('td');
+//         ingredient.innerHTML = data.drinks[0][`strIngredient${i}`];
+//         // $ingredients.append(ingredient);
+//     };
+//     for (let i = 1; i < 16; i++) {
+//         var measurement = document.createElement('td');
+//         measurement.innerHTML = data.drinks[0][`strMeasure${i}`];
+//         // $measurements.append(measurement);
+//     };
+//     const $tr = $(`
+//         <tr>
+//             ${ingredient}
+//             ${measurement}
+//         </tr>
+//     `);
+//     $('tbody').append($tr);
+// }
+
 
 function modalTitle(data) {
     $('#title').text(data.drinks[0]['strDrink']);

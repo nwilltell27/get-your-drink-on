@@ -1,5 +1,5 @@
 # Get Your Drink On
-A simple web app that allows users to search Cocktail Database by ingredient. 
+A simple web app that allows users to easily search Cocktail Database by ingredient. 
 
 ## Technologies
 - HTML5
@@ -22,4 +22,4 @@ A simple web app that allows users to search Cocktail Database by ingredient.
 3. (COMPLETE) Allow users to search by "Cocktail Name."
 4. (COMPLETE) Initialize website to a _Random Cocktail_.
 5. (COMPLETE) **Make "Mobile Friendly."**
-6. Add function to capitalize first letter of each word in Drink Name title. 
+6. Display number of results under search field. 

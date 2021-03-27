@@ -227,7 +227,7 @@ h1:active {
 }
 
 .topRow h2 {
-    font-size: 16px;
+    font-size: 18px;
     text-align: center;
 }
 
@@ -254,6 +254,10 @@ h1:active {
     /* align-items: center; */
     font-size: 14px;
     margin: 5px;
+}
+
+.col-1 ol, .col-2 ol {
+    margin-left: -25px;
 }
 
 .ingredients, .measurements {
@@ -304,7 +308,7 @@ h1:active {
     /* Modals */
     .topRow h2 {
         font-size: 24px;
-        text-decoration: underline;
+        /* text-decoration: underline; */
     }
 
     .flexContainer h3 {
