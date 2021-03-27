@@ -8,6 +8,7 @@ let drinks;
 let drink;
 let $input;
 let results;
+let displayInput;
 // let ingredients;
 // let measurements;
 
@@ -108,6 +109,7 @@ function handleGetDataByIngredient(evt) {
         });
     /* clears input */
     $input.val('');
+    displayInput = userInput;
 };
 
 function handleGetDataByName(evt) {
@@ -124,6 +126,7 @@ function handleGetDataByName(evt) {
         });
     /* clears input */
     $input.val('');
+    displayInput = userInput;
 };
 
 /* Renders Drink Cards to the DOM */
@@ -144,9 +147,9 @@ function render() {
 
 function displayResults() {
     if (results.length === 1) {
-        $searchResults.append('Displaying ' + results.length + ' result');
+        $searchResults.append(`Displaying ${results.length} result containing "${displayInput}"`);
     } else {
-        $searchResults.append('Displaying ' + results.length + ' results');
+        $searchResults.append(`Displaying ${results.length} results containing "${displayInput}"`);
     }
 };
 
